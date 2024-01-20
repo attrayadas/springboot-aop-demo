@@ -17,7 +17,8 @@ import org.springframework.stereotype.Component;
 public class LoggingAdvice {
 
 //    @Pointcut("execution(* com.attraya.*.*.*(..))")
-    @Pointcut("within(com.attraya..*)")
+//    @Pointcut("within(com.attraya..*)")
+    @Pointcut("target(com.attraya.service.EmployeeService)")
     private void logPointCut(){}
 
     @Before("logPointCut()")
