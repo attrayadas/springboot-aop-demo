@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAdvice {
 
-    @Pointcut("execution(* com.attraya.*.*.*(..))")
+//    @Pointcut("execution(* com.attraya.*.*.*(..))")
+    @Pointcut("within(com.attraya..*)")
     private void logPointCut(){}
 
     @Before("logPointCut()")
