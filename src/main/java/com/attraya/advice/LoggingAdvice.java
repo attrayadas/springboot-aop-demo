@@ -19,7 +19,9 @@ public class LoggingAdvice {
 //    @Pointcut("execution(* com.attraya.*.*.*(..))")
 //    @Pointcut("within(com.attraya..*)")
 //    @Pointcut("target(com.attraya.service.EmployeeService)")
-    @Pointcut("execution(* com.attraya.service.EmployeeService.get*(int))")
+//    @Pointcut("execution(* com.attraya.service.EmployeeService.get*(int))")
+    @Pointcut("execution(* com.attraya.controller.EmployeeController.*(..)) ||" +
+            " execution(* com.attraya.service.EmployeeService.*(..))")
     private void logPointCut(){}
 
     @Before("logPointCut()")
