@@ -16,6 +16,10 @@ public class EmployeeController {
 
     @PostMapping
     public String saveEmployee(@RequestBody Employee employee){
+        // Throwing exception to demonstrate @AfterThrowing
+        if (employee.getEmail().contains("gmail")){
+            throw new RuntimeException("Gmail not allowed");
+        }
         return employeeService.saveEmployee(employee);
     }
 
