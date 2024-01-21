@@ -2,6 +2,8 @@ package com.attraya.controller;
 
 import com.attraya.entity.Employee;
 import com.attraya.service.EmployeeService;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +16,21 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private ObservationRegistry observationRegistry;
+
     @PostMapping
     public String saveEmployee(@RequestBody Employee employee){
-        // Throwing exception to demonstrate @AfterThrowing
-        if (employee.getEmail().contains("gmail")){
-            throw new RuntimeException("Gmail not allowed");
-        }
-        return employeeService.saveEmployee(employee);
+        /* Throwing exception to demonstrate @AfterThrowing */
+//        if (employee.getEmail().contains("gmail")){
+//            throw new RuntimeException("Gmail not allowed");
+//        }
+        String newEmployee = employeeService.saveEmployee(employee);
+        /* To view metrics, hit the request, then goto http://localhost:8080/actuator/metrics/saveEmployee */
+//        Observation.createNotStarted("saveEmployee", observationRegistry)
+//                .observe(()->newEmployee);
+
+        return newEmployee;
     }
 
     @GetMapping
