@@ -27,7 +27,13 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeById(int id){
-        return employeeRepository.findById(id);
+        Employee getEmployee = null;
+        try {
+            getEmployee = employeeRepository.findById(id);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Employee not available with id- "+id);
+        }
+        return getEmployee;
     }
 
     public String getNameById(int id){

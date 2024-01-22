@@ -26,10 +26,10 @@ public class MetricsRegistryAdvice {
     */
     @After("execution(* com.attraya.controller.*.*(..))")
     public void sendMetrics(JoinPoint joinPoint){
-        log.info("application collecting metrics");
+        log.info("ObservationRegistry.sendMetrics :: application collecting metrics");
         Observation.createNotStarted(joinPoint.getSignature().getName(), observationRegistry)
                 .observe(()->joinPoint.getArgs());
-        log.info("application publishing metrics");
+        log.info("ObservationRegistry.sendMetrics :: application publishing metrics");
     }
 
 }

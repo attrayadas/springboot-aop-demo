@@ -22,9 +22,9 @@ public class EmployeeController {
     @PostMapping
     public String saveEmployee(@RequestBody Employee employee){
         /* Throwing exception to demonstrate @AfterThrowing */
-//        if (employee.getEmail().contains("gmail")){
-//            throw new RuntimeException("Gmail not allowed");
-//        }
+        if (employee.getEmail().contains("gmail")){
+            throw new RuntimeException("Gmail not allowed");
+        }
         String newEmployee = employeeService.saveEmployee(employee);
         /* To view metrics, hit the request, then goto http://localhost:8080/actuator/metrics/saveEmployee */
 //        Observation.createNotStarted("saveEmployee", observationRegistry)
