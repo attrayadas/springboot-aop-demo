@@ -1,5 +1,6 @@
 package com.attraya.service;
 
+import com.attraya.annotation.LogRequestAndResponse;
 import com.attraya.entity.Employee;
 import com.attraya.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class EmployeeService {
         return employeeRepository.getAllEmployees();
     }
 
+    @LogRequestAndResponse
     public Employee getEmployeeById(int id){
         Employee getEmployee = null;
         try {

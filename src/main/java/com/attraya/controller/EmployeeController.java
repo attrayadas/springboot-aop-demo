@@ -1,5 +1,6 @@
 package com.attraya.controller;
 
+import com.attraya.annotation.LogRequestAndResponse;
 import com.attraya.entity.Employee;
 import com.attraya.service.EmployeeService;
 import io.micrometer.observation.Observation;
@@ -20,6 +21,7 @@ public class EmployeeController {
     private ObservationRegistry observationRegistry;
 
     @PostMapping
+    @LogRequestAndResponse
     public String saveEmployee(@RequestBody Employee employee){
         /* Throwing exception to demonstrate @AfterThrowing */
         if (employee.getEmail().contains("gmail")){
@@ -59,6 +61,7 @@ public class EmployeeController {
     }
 
     @PutMapping
+    @LogRequestAndResponse
     public String updateEmployee(@RequestBody Employee employee){
         return employeeService.updateEmployee(employee);
     }

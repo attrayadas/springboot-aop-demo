@@ -13,7 +13,8 @@ public class CustomLoggingFramework {
 
     // Use debugging to get the complete flow of code
     // before & after returning
-    @Around("execution(* com.attraya.controller.EmployeeController.*(..))")
+//    @Around("execution(* com.attraya.controller.EmployeeController.*(..))")
+    @Around("@annotation(com.attraya.annotation.LogRequestAndResponse)") // whenever the code will find annotation, this advice will be implemented
     public Object captureRequestAndResponse(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
         // execute your before logic
