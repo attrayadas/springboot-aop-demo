@@ -1,6 +1,7 @@
 package com.attraya.service;
 
 import com.attraya.annotation.LogRequestAndResponse;
+import com.attraya.annotation.TrackExecutionTime;
 import com.attraya.entity.Employee;
 import com.attraya.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @TrackExecutionTime
     public String saveEmployee(Employee employee){
         int count = employeeRepository.save(employee);
         return "RECORD INSERTED! "+count;

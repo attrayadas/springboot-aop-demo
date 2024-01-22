@@ -1,6 +1,7 @@
 package com.attraya.controller;
 
 import com.attraya.annotation.LogRequestAndResponse;
+import com.attraya.annotation.TrackExecutionTime;
 import com.attraya.entity.Employee;
 import com.attraya.service.EmployeeService;
 import io.micrometer.observation.Observation;
@@ -22,6 +23,7 @@ public class EmployeeController {
 
     @PostMapping
     @LogRequestAndResponse
+    @TrackExecutionTime
     public String saveEmployee(@RequestBody Employee employee){
         /* Throwing exception to demonstrate @AfterThrowing */
         if (employee.getEmail().contains("gmail")){
